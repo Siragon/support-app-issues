@@ -16,8 +16,7 @@
 		  reader.onloadend = function () {
 			OAuth.popup('imgur', function(error, result) {
 				var token = result.access_token;
-               console.log(reader.result);
-               console.log(token);
+				var arr = reader.result.split(',');
 				$.ajax({ 
 					url: 'https://api.imgur.com/3/image',
 					headers: {
@@ -25,7 +24,7 @@
 					},
 					type: 'POST',
 					data: {
-						'image': reader.result,
+						'image': arr[1],
                       	'type': 'base64'
 					},
 					success: function(data) { console.log(data); },
