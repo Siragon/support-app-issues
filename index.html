@@ -32,7 +32,7 @@
 					success: function(xhr, status, result) { 
                       var img = JSON.parse(result.responseText);
                       var type = file.type.split('\/');
-                      console.log(img.data.id+'m'+type);
+                      console.log('http:\/\/i.imgur.com\/'+img.data.id+'m'+type[1]);
                     },
                   error: function(xhr, status, error) {
   						
