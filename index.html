@@ -15,10 +15,11 @@
 
 		  reader.onloadend = function () {
 			OAuth.popup('imgur', function(error, result) {
+				var token = result.access_token;
 				$.ajax({ 
 					url: 'https://api.imgur.com/3/image',
 					headers: {
-						'Authorization': 'Bearer '+ result.access_token
+						'Authorization': 'Bearer '+ token
 					},
 					type: 'POST',
 					data: {
