@@ -23,11 +23,11 @@
 					headers: {
 						'Authorization': 'Bearer '+ token
 					},
+                  	dataType: 'json',
 					type: 'POST',
 					data: {
 						'image': arr[1],
-                      	'type': 'base64',
-                      'album': 'issues'
+                      	'type': 'base64'
 					},
 					success: function(xhr, status, result) { 
   						console.log(result.responseText);
