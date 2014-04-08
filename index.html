@@ -27,7 +27,11 @@
 					data: {
 						'image': reader.result
 					},
-					success: function(data) { console.log(data); }
+					success: function(data) { console.log(data); },
+                  error: function(xhr, status, error) {
+  					var err = eval("(" + xhr.responseText + ")");
+  					alert(err.Message);
+					}
 				});
 			});
 			
