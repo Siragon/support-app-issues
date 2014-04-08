@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/oauth.js"></script>
+		<script>
+		OAuth.initialize('96AdgNXwWNzp8UZ7fbtIk0vgp54');
+		function previewFile() {
+		  //var preview = document.querySelector('img');
+		  var file    = document.querySelector('input[type=file]').files[0];
+		  var reader  = new FileReader();
+
+		  reader.onloadend = function () {
+			OAuth.popup('imgur', function(error, result) {
+				$.ajax({ 
+					url: 'https://api.imgur.com/3/image',
+					headers: {
+						'Authorization': 'Bearer '+ result.access_token
+					},
+					type: 'POST',
+					data: {
+						'image': reader.result
+					},
+					success: function() { console.log('cool'); }
+				});
+			});
+			
+		  }
+
+		  if (file) {
+			reader.readAsDataURL(file);
+		  } else {
+			//preview.src = "";
+		  }
+		}
+/*			OAuth.initialize('96AdgNXwWNzp8UZ7fbtIk0vgp54');
+			//Using popup (option 1)
+			OAuth.popup('imgur', function(error, result) {
+			  //handle error with error
+			  //use result.access_token in your API request
+			});
+			
+			OAuth.popup('github', function(error, result) {
+			  //handle error with error
+			  //use result.access_token in your API request
+			});
+/*
+ 	https://api.imgur.com/3/image
+	type: base64 
+	title
+	description
+	name
+	album
+	
+	https://api.imgur.com/models/image
+	https://api.imgur.com/endpoints/image#image-upload
+	
+
+
+$.ajax({ 
+    url: 'https://api.imgur.com/3/image',
+    headers: {
+        'Authorization': 'Client-ID YOUR_CLIENT_ID'
+    },
+    type: 'POST',
+    data: {
+        'image': 'helloworld.jpg'
+    },
+    success: function() { console.log('cool'); }
+});
+
+
+
+{
+    "data": {
+        "id": "SbBGk",
+        "title": null,
+        "description": null,
+        "datetime": 1341533193,
+        "type": "image/jpeg",
+        "animated": false,
+        "width": 2559,
+        "height": 1439,
+        "size": 521916,
+        "views": 1,
+        "bandwidth": 521916,
+        "deletehash": "eYZd3NNJHsbreD1"
+        "section": null,
+        "link": "http://i.imgur.com/SbBGk.jpg",
+    },
+    "success": true,
+    "status": 200
+}
+*/
+
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="main">
+				<form class="cbp-mc-form">
+					<div class="cbp-mc-column">
+	  					<label for="marca">Marca</label>
+	  					<select id="marca" name="marca">
+	  						<option>Síragon</option>
+	  						<option>Soneview</option>
+	  					</select>
+	  					<label for="modelo">Modelo</label>
+	  					<select id="modelo" name="modelo">
+	  						<option>Dubai</option>
+	  						<option>Seattle</option>
+	  						<option>Wing</option>
+	  						<option>Exdroid</option>
+	  						<option>Duke</option>
+	  						<option>Chagall</option>
+	  					</select>
+						<label for="photo">Foto</label>
+						<input id="photo" type="file" name="photo" accept="image/*" onchange="previewFile()">
+						<img src="" height="200" alt="Image preview...">
+	  					<label for="sintoma">Síntoma</label>
+	  					<textarea id="sintoma" name="sintoma"></textarea>
+	  				</div>
+	  				<div class="cbp-mc-column">
+	  					<label for="tests">Pruebas realizadas</label>
+	  					<textarea id="tests" name="tests"></textarea>
+						<label for="solution">Solución</label>
+	  					<textarea id="solution" name="solution"></textarea>
+	  				</div>
+	  				<div class="cbp-mc-column">
+	  					<label for="comments">Comentarios</label>
+	  					<textarea id="comments" name="comments"></textarea>	
+	  					<label for="remember">Recuerde</label>
+	  					<textarea id="remember" name="remember"></textarea>	
+	  				</div>
+	  				<div class="cbp-mc-submit-wrap"><input class="cbp-mc-submit" type="submit" value="Enviar" /></div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
