@@ -43,6 +43,15 @@ return req;
 					},
                   	dataType: 'json',
 					type: 'POST',
+ complete: function() { console.log("Completed."); },
+progress: function(evt) {
+if (evt.lengthComputable) {
+console.log("Loaded " + parseInt( (evt.loaded / evt.total * 100), 10) + "%");
+}
+else {
+console.log("Length not computable.");
+}
+},
 					data: {
 						'image': arr[1],
                       	'type': 'base64'
