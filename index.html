@@ -30,7 +30,8 @@
                       	'type': 'base64'
 					},
 					success: function(xhr, status, result) { 
-  						console.log(result.responseText);
+                      var img = JSON.parse(result.responseText);
+                      console.log(img.data.id);
                     },
                   error: function(xhr, status, error) {
   						
