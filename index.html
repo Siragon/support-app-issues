@@ -29,8 +29,9 @@
 					},
 					success: function(data) { console.log(data); },
                   error: function(xhr, status, error) {
-  					var err = eval("(" + xhr.responseText + ")");
-  					alert(err.Message);
+  					console.log(xhr);
+                    console.log(status);
+                    console.log(error);
 					}
 				});
 			});
