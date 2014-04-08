@@ -37,15 +37,7 @@
                   error: function(xhr, status, error) {
   						
 					}
-				}).progress(function (e) {
-if (e.lengthComputable) {
-console.log(e.loaded / e.total * 100 + '%');
-}
-}
-).success: function (response) {
-
-}
-});
+				});
 			});
 			
 		  }
