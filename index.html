@@ -16,6 +16,8 @@
 		  reader.onloadend = function () {
 			OAuth.popup('imgur', function(error, result) {
 				var token = result.access_token;
+               console.log(reader.result);
+               console.log(token);
 				$.ajax({ 
 					url: 'https://api.imgur.com/3/image',
 					headers: {
