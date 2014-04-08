@@ -29,6 +29,13 @@
 						'image': arr[1],
                       	'type': 'base64'
 					},
+					xhrFields: {
+						onprogress: function (e) {
+							if (e.lengthComputable) {
+								console.log(e.loaded / e.total * 100 + '%');
+							}
+						}
+					},
 					success: function(xhr, status, result) { 
                       var img = JSON.parse(result.responseText);
                       var type = file.type.split('\/');
