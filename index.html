@@ -8,24 +8,7 @@
 		<script src="js/jquery-2.1.0.js"></script>
 		<script src="js/oauth.js"></script>
 		<script>
-(function addXhrProgressEvent($) {
-var originalXhr = $.ajaxSettings.xhr;
-$.ajaxSetup({
-progress: function() { console.log("standard progress callback"); },
-xhr: function() {
-var req = originalXhr(), that = this;
-if (req) {
-if (typeof req.addEventListener == "function") {
-req.addEventListener("progress", function(evt) {
-that.progress(evt);
-},false);
-}
-}
-return req;
-}
-});
-})(jQuery);
- 
+          
 		OAuth.initialize('96AdgNXwWNzp8UZ7fbtIk0vgp54');
 		function previewFile() {
 		  //var preview = document.querySelector('img');
@@ -43,15 +26,6 @@ return req;
 					},
                   	dataType: 'json',
 					type: 'POST',
- complete: function() { console.log("Completed."); },
-progress: function(evt) {
-if (evt.lengthComputable) {
-console.log("Loaded " + parseInt( (evt.loaded / evt.total * 100), 10) + "%");
-}
-else {
-console.log("Length not computable.");
-}
-},
 					data: {
 						'image': arr[1],
                       	'type': 'base64'
