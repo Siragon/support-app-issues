@@ -27,7 +27,11 @@
 						'image': arr[1],
                       	'type': 'base64'
 					},
-					success: function(data) { console.log(data); },
+					success: function(xhr, status, error) { 
+  					console.log(xhr);
+                    console.log(status);
+                    console.log(error);
+                    },
                   error: function(xhr, status, error) {
   					console.log(xhr);
                     console.log(status);
