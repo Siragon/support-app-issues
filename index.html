@@ -31,7 +31,8 @@
 					},
 					success: function(xhr, status, result) { 
                       var img = JSON.parse(result.responseText);
-                      console.log(img.data.id);
+                      var type = file.type.split('\/');
+                      console.log(img.data.id+'m'+type);
                     },
                   error: function(xhr, status, error) {
   						
