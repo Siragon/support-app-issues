@@ -25,7 +25,8 @@
 					},
 					type: 'POST',
 					data: {
-						'image': reader.result
+						'image': reader.result,
+                      	'type': 'base64'
 					},
 					success: function(data) { console.log(data); },
                   error: function(xhr, status, error) {
